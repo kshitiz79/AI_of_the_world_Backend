@@ -17,6 +17,12 @@ func SetupRoutes(router *gin.Engine) {
 		{
 			auth.POST("/register", controllers.Register)
 			auth.POST("/login", controllers.Login)
+
+			// OTP routes
+			auth.POST("/send-otp", controllers.SendOTP)
+			auth.POST("/verify-otp", controllers.VerifyOTP)
+			auth.POST("/signup-with-otp", controllers.SignupWithOTP)
+			auth.POST("/reset-password", controllers.ResetPassword)
 		}
 
 		// Public tag routes (read-only)
@@ -55,6 +61,7 @@ func SetupRoutes(router *gin.Engine) {
 		{
 			// User profile
 			protected.GET("/profile", controllers.GetProfile)
+			protected.PUT("/profile/interests", controllers.UpdateInterests)
 
 			// Image upload
 			protected.POST("/images/upload", controllers.UploadImage)

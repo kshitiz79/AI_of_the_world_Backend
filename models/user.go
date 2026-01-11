@@ -13,6 +13,7 @@ type User struct {
 	Role              string     `gorm:"type:enum('user','admin');default:'user';not null" json:"role"`
 	ProfilePictureURL string     `gorm:"size:500" json:"profile_picture_url"`
 	Bio               string     `gorm:"type:text" json:"bio"`
+	Interests         string     `gorm:"type:text" json:"interests"` // JSON array of interest IDs
 	TotalCreations    int        `gorm:"default:0" json:"total_creations"`
 	TotalLikes        int        `gorm:"default:0" json:"total_likes"`
 	TrendingScore     int        `gorm:"default:0" json:"trending_score"`

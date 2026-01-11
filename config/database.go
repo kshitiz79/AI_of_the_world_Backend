@@ -1,6 +1,7 @@
 package config
 
 import (
+	"ai-of-the-world-backend/models"
 	"fmt"
 	"log"
 	"time"
@@ -40,6 +41,13 @@ func ConnectDatabase() {
 	sqlDB.SetMaxIdleConns(10)
 	sqlDB.SetMaxOpenConns(100)
 	sqlDB.SetConnMaxLifetime(time.Hour)
+
+	// Auto-migrate OTP table
+	if err := DB.AutoMigrate(&models.OTP{}); err != nil {
+		log.Println("⚠️  Failed to auto-migrate OTP table:", err)
+	} else {
+		log.Println("✅ OTP table migrated successfully")
+	}
 
 	log.Println("✅ Database connected successfully")
 }

@@ -1,37 +1,37 @@
-# Environment files
-.env
+# # Environment files
+# .env
 
-# Binaries
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
-ai-of-the-world-backend
+# # Binaries
+# *.exe
+# *.exe~
+# *.dll
+# *.so
+# *.dylib
+# ai-of-the-world-backend
 
-# Test binary
-*.test
+# # Test binary
+# *.test
 
-# Output of the go coverage tool
-*.out
+# # Output of the go coverage tool
+# *.out
 
-# Dependency directories
-vendor/
+# # Dependency directories
+# vendor/
 
-# Go workspace file
-go.work
+# # Go workspace file
+# go.work
 
-# Uploads directory
-uploads/*
-!uploads/.gitkeep
+# # Uploads directory
+# uploads/*
+# !uploads/.gitkeep
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# # IDE
+# .vscode/
+# .idea/
+# *.swp
+# *.swo
+# *~
 
-# OS
-.DS_Store
-Thumbs.db
+# # OS
+# .DS_Store
+# Thumbs.db

@@ -131,3 +131,25 @@ func GetProfile(c *gin.Context) {
 	user.PasswordHash = ""
 	utils.SuccessResponse(c, http.StatusOK, "Profile retrieved successfully", user)
 }
+
+// UpdateInterests updates the user's interests
+func UpdateInterests(c *gin.Context) {
+	userID, _ := c.Get("userID")
+
+	var req struct {
+		Interests string `json:"interests" binding:"required"`
+	}
+
+	if err := c.ShouldBindJSON(&req); err != nil {
+		utils.ErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	// Update user interests
+	if err := config.DB.Model(&models.User{}).Where("id = ?", userID).Update("interests", req.Interests).Error; err != nil {
+		utils.ErrorResponse(c, http.StatusInternalServerError, "Failed to update interests")
+		return
+	}
+
+	utils.SuccessResponse(c, http.StatusOK, "Interests updated successfully", nil)
+}
