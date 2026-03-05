@@ -42,11 +42,18 @@ func ConnectDatabase() {
 	sqlDB.SetMaxOpenConns(100)
 	sqlDB.SetConnMaxLifetime(time.Hour)
 
-	// Auto-migrate OTP table
-	if err := DB.AutoMigrate(&models.OTP{}); err != nil {
-		log.Println("⚠️  Failed to auto-migrate OTP table:", err)
+	// Auto-migrate all tables
+	if err := DB.AutoMigrate(
+		&models.User{},
+		&models.OTP{},
+		&models.Tag{},
+		&models.ImagePrompt{},
+		&models.GIFPrompt{},
+		&models.VideoPrompt{},
+	); err != nil {
+		log.Println("⚠️  Failed to auto-migrate tables:", err)
 	} else {
-		log.Println("✅ OTP table migrated successfully")
+		log.Println("✅ Database tables migrated successfully")
 	}
 
 	log.Println("✅ Database connected successfully")
